@@ -24,5 +24,6 @@
 	<pipeline>
 		<nom>formulaire_traiter</nom>
 		<inclure>mp_pipelines.php</inclure>
-	</pipeline	
+	</pipeline>
+	<necessite id="cfg" version='[1.16.0;]'/>	
 </plugin>
