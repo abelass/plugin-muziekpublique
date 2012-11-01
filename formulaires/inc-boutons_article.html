@@ -1,6 +1,7 @@
 #SET{id_rubrique,#CONFIG{pb_selection/selection_rubrique,#ARRAY}|picker_selected{rubrique}}
 #SET{rubriques_unilingues,#CONFIG{mp/rubrique_selection_unilingue,#ARRAY}|picker_selected{rubrique}}
 
+#SET{exclure,#ENV{exclure}|array_merge{#GET{rubriques_unilingues}}}
 #SET{id_secteur,0}
 
 
@@ -12,7 +13,7 @@
 		<option value="0"><:pb_selection:racine:></option>
 		]
 	]
-      <BOUCLE_rub(RUBRIQUES){id_rubrique IN #GET{id_rubrique}} {lang=#ENV{langue}}{id_rubrique !IN #ENV{exclure}}{tout}>
+      <BOUCLE_rub(RUBRIQUES){id_rubrique IN #GET{id_rubrique}} {lang=#ENV{langue}}{id_rubrique !IN #GET{exclure}}{tout}>
    	<option value="#ID_RUBRIQUE" >#TITRE</option>
       </BOUCLE_rub>  
 

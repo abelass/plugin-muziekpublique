@@ -27,4 +27,5 @@
 	</pipeline>
 	<necessite id="cfg" version='[1.16.0;]'/>	
 	<necessite id="saisies" version='[1.24.4;]'/>	
+	<necessite id="pb_selection" version='[1.2.0;]'/>		
 </plugin>
