@@ -26,4 +26,5 @@
 		<inclure>mp_pipelines.php</inclure>
 	</pipeline>
 	<necessite id="cfg" version='[1.16.0;]'/>	
+	<necessite id="saisies" version='[1.24.4;]'/>	
 </plugin>

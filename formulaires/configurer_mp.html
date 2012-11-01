@@ -9,19 +9,13 @@
 	<form action="#ENV{action}" method="post"><div>
 		#ACTION_FORMULAIRE{#ENV{action}}
 		<ul>
-			<li class="fieldset">
-				<fieldset><legend><:multilingue:menu_langue:></legend>
-		        <li class="editer_menu_langue obligatoire[(#ENV**{erreurs}|table_valeur{menu_langue}|oui)erreur]">
-					<label for="menu_langue"><:multilingue:afficher_menu_select:></label>
-					<div class="choix">
-						<input type='checkbox' name='menu_langue' id='menu_langue' value="select" class="checkbox" [(#ENV{menu_langue}|oui) checked="checked"]/>
-						<label for="champ_rubrique_non"><:multilingue:oui:></label>
-						<p class="explication"><:multilingue:precision_menu_select:></p>
-					</div>
-		        </li>
-				</ul>
-				</fieldset>
-			</li>
+          [(#SAISIE{
+                  selecteur_rubrique,
+                  rubrique_selection_unulingue,
+                  multiple=oui,
+                  label=<:mp:selection_rubrique_affichage_unilingue:>
+                  }
+                 )]
 		</ul>
 		
 		<p class="boutons">

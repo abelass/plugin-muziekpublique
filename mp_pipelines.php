@@ -1,4 +1,5 @@
 <?php
+/*
 function mp_porte_plume_barre_pre_charger($barres){
 	$barre = &$barres['edition'];
 	
@@ -203,6 +204,9 @@ function mp_porte_plume_lien_classe_vers_icone($flux){
 		'outil_barre_tableau' => 'barre-tableau.png',
 	));
 }
-
-function mp_formulaire_traiter(){}
+*/
+function mp_formulaire_traiter($flux){
+    
+    
+}
 ?>
