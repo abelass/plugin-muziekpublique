@@ -1,8 +1,9 @@
 <?php
 
 if (!defined("_ECRIRE_INC_VERSION")) return;
+
 function inc_verifier_ordre_dist($where){
-    $result_num = sql_select("*","spip_selection_objets", $where,'', "ordre,id_objet");
+    $result_num = sql_select("*","spip_pb_selection", $where,'', "ordre,id_article");
     $ordre = 0;
                 
     // on vérifie l'ordre des objets déjà enregistrés et on corrige si beselection_objetin
@@ -14,7 +15,7 @@ function inc_verifier_ordre_dist($where){
             'id_article='.$row['id_article'],
             );
 
-        sql_updateq("spip_selection_objets",array("ordre" => $ordre),$where) ;
+        sql_updateq("spip_pb_selection",array("ordre" => $ordre),$where) ;
         }
         
     return $ordre;

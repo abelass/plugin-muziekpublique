@@ -73,7 +73,7 @@ if ($_GET["remonter_ordre"] > 0) {
 	
 	$where = array( 
 			"id_rubrique='$id_rubrique'",	
-			'id_article='.$remonter 
+
 			);
 	
 	$result = sql_select("*", "spip_pb_selection", $where, "ordre");
@@ -107,10 +107,8 @@ if ($_GET["descendre_ordre"] > 0) {
 	
 	if ($row = sql_fetch($result)) {
 		$ordre = $row["ordre"];
-        echo $ordre; 
 			$where = array( 
 			"id_rubrique=$id_rubrique",
-			"id_article=$descendre",
 			"ordre>'$ordre'"		
 			);
 		$result2 = sql_select("*", "spip_pb_selection", $where, "ordre LIMIT 0,1");
