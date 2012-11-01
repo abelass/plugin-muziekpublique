@@ -1,0 +1,28 @@
+#CACHE{0}
+
+[(#REM) titre=NB]
+[(#REM) descriptif=
+<h4>Configuration du plugin Muziekpublique</h4>
+]
+
+<div class="formulaire_spip formulaire_editer formulaire_cfg">
+<form method="post"><div>
+	[(#ENV{_cfg_}|form_hidden)]
+	<ul>
+		<li class="editer_api_nb">
+			<label><:nb:api_google:></label>
+			<div class="texte">
+				<input type="text" name="api_google" class="radio" id="api_api_google" value="#ENV{api_google,api google}"/>
+				<label for="api_carte_geomap"><:nb:api_google:></label>
+			</div>
+		</li>
+
+
+
+	<p class="boutons">
+		<input type="submit" name="_cfg_ok" class="submit" value="<:valider:>" />
+		<input type="submit" name="_cfg_delete" class="submit" value="<:effacer:>" />
+	</p>
+</div></form>
+</div>
+#CFG_ARBO{nb}
