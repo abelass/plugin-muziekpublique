@@ -1,0 +1,28 @@
+#SET{id_rubrique,#CONFIG{pb_selection/selection_rubrique,#ARRAY}|picker_selected{rubrique}}
+#SET{rubriques_unilingues,#CONFIG{mp/rubrique_selection_unilingue,#ARRAY}|picker_selected{rubrique}}
+#SET{id_secteur,0}
+
+#SET{exclure,#ENV{exclure}|array_merge{#GET{rubriques_unilingues}}}	
+	<B_rub>
+	<fieldset>
+	<label><:pb_selection:affichage_section:></label>
+	<select name="id_rubrique">
+	[([(#GET{id_secteur}|in_array{#GET{id_rubrique}}|oui)
+		[(#ENV{exclure_source}|non)
+		<option value="0"><:pb_selection:racine:></option>
+		]
+	]
+      <BOUCLE_rub(RUBRIQUES){id_rubrique IN #GET{id_rubrique}} {lang=#ENV{langue}}{id_rubrique !IN #ENV{exclure}}{tout}>
+   	<option value="#ID_RUBRIQUE" >#TITRE</option>
+      </BOUCLE_rub>  
+
+	<BOUCLE_unilingues(POUR){tableau #GET{rubriques_unilingues}}>
+	   <BOUCLE_rub_ul(RUBRIQUES){id_rubrique=#VALEUR}{tout}>
+	    <option value="#ID_RUBRIQUE" >#TITRE</option>
+	   </BOUCLE_rub_ul>
+	</BOUCLE_unilingues>
+	       </select>
+    	<p class="boutons">
+    	 	<input type="submit" name="ok" class="submit" value="ok"  />
+    	</fieldset> 	
+    	</B_rub>
