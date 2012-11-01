@@ -1,9 +1,9 @@
 #SET{id_rubrique,#CONFIG{pb_selection/selection_rubrique,#ARRAY}|picker_selected{rubrique}}
 #SET{rubriques_unilingues,#CONFIG{mp/rubrique_selection_unilingue,#ARRAY}|picker_selected{rubrique}}
+
 #SET{id_secteur,0}
 
-#SET{exclure,#ENV{exclure}|array_merge{#GET{rubriques_unilingues}}}	
-	<B_rub>
+
 	<fieldset>
 	<label><:pb_selection:affichage_section:></label>
 	<select name="id_rubrique">
@@ -17,7 +17,7 @@
       </BOUCLE_rub>  
 
 	<BOUCLE_unilingues(POUR){tableau #GET{rubriques_unilingues}}>
-	   <BOUCLE_rub_ul(RUBRIQUES){id_rubrique=#VALEUR}{tout}>
+	   <BOUCLE_rub_ul(RUBRIQUES){id_rubrique=#VALEUR}{tout}{id_rubrique !IN #ENV{exclure}}>
 	    <option value="#ID_RUBRIQUE" >#TITRE</option>
 	   </BOUCLE_rub_ul>
 	</BOUCLE_unilingues>
@@ -25,4 +25,4 @@
     	<p class="boutons">
     	 	<input type="submit" name="ok" class="submit" value="ok"  />
     	</fieldset> 	
-    	</B_rub>
+    	
