@@ -6,7 +6,7 @@ function inc_verifier_ordre_dist($where){
     $result_num = sql_select("*","spip_pb_selection", $where,'', "ordre,id_article");
     $ordre = 0;
                 
-    // on vérifie l'ordre des objets déjà enregistrés et on corrige si beselection_objetin
+    // on vérifie l'ordre des objets déjà enregistrés et on corrige si besion
                 
     while ($row = sql_fetch($result_num)) {
         $ordre++;
