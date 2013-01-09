@@ -9,7 +9,7 @@
 $p=explode(basename(_DIR_PLUGINS)."/",str_replace('\\','/',realpath(dirname(__FILE__))));
 define('_DIR_PLUGIN_SELECTION',(_DIR_PLUGINS.end($p)));
 
-
+ $verifier_ordre=charger_fonction('verifier_ordre_article','inc');
 	
 if ($_GET["ajouter_selection"] > 0) {
 	$ajouter = $_GET["ajouter_selection"];
@@ -45,6 +45,11 @@ if ($_GET["ajouter_selection"] > 0) {
 			$ordre ++;
 			sql_insertq("spip_pb_selection", array('id_rubrique' => $id_rubrique, 'id_article'=>$ajouter, 'ordre'=>$ordre, 'lang'=>$lang));
 			
+            $where = array(
+                'id_rubrique='.$id_rubrique,
+                );
+                
+            $ordre=$verifier_ordre($where); 
 		}
 
 	} else {
@@ -62,6 +67,12 @@ if ($_GET["supprimer_ordre"] > 0) {
 	if (!autoriser('modifier','rubrique', $id_rubrique)) die ("Interdit");
 	sql_delete("spip_pb_selection", "id_rubrique=$id_rubrique AND id_article=$supprimer");
 
+	           
+            $where = array(
+                'id_rubrique='.$id_rubrique,
+                );
+                
+            $ordre=$verifier_ordre($where); 
 }
 
 if ($_GET["remonter_ordre"] > 0) {
@@ -89,8 +100,14 @@ if ($_GET["remonter_ordre"] > 0) {
 	
 	}
 	
-	sql_updateq("spip_pb_selection", array("ordre" => $ordre_prec), "id_rubrique = '$id_rubrique' AND lang = '$lang' AND id_article='$remonter'");
-	sql_updateq("spip_pb_selection", array("ordre" => $ordre), "id_rubrique = '$id_rubrique' AND lang = '$lang' AND id_article='$art_prec'");
+	sql_updateq("spip_pb_selection", array("ordre" => $ordre_prec), "id_rubrique = '$id_rubrique'  AND id_article='$remonter'");
+	sql_updateq("spip_pb_selection", array("ordre" => $ordre), "id_rubrique = '$id_rubrique'  AND id_article='$art_prec'");
+            
+            $where = array(
+                'id_rubrique='.$id_rubrique, 
+                );
+                
+            $ordre=$verifier_ordre($where);     
 	
 }
 
@@ -120,7 +137,12 @@ if ($_GET["descendre_ordre"] > 0) {
 
 			sql_updateq("spip_pb_selection", array("ordre" => $ordre_suiv), "id_rubrique = '$id_rubrique'  AND id_article='$descendre'");
 			sql_updateq("spip_pb_selection", array("ordre" => $ordre), "id_rubrique = '$id_rubrique'  AND id_article='$art_suiv'");
-
+            
+            $where = array(
+                'id_rubrique='.$id_rubrique,
+                );
+                
+            $ordre=$verifier_ordre($where); 
 		}
 	
 	}
